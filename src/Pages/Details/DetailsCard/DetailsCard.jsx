@@ -1,5 +1,6 @@
 import React, {  useContext, useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+
 import ReactStarsRating from 'react-awesome-stars-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
@@ -32,9 +33,14 @@ const DetailsCard = () => {
     },[])
 
     const addToCart=(product)=>{
-        let addProduct= [...carts]        
+        let addProduct= [...carts] 
+        if(addProduct.includes(product)) {
+            return toast(<p className='alert alert-error'>Product already exist </p>); 
+
+        }      
         addProduct.push(product);
         setCarts(addProduct);  
+
         toast(<p className='alert alert-info'>Product is successfully add </p>);    
     } 
     
@@ -104,7 +110,9 @@ const DetailsCard = () => {
                         <div className='flex  gap-6 '>
                             <button onClick={()=>addToCart(product)}  className=' border py-2 px-4 bg-purple-700 text-white rounded-full '  > <span className='flex  justify-center items-center gap-2'>Add to Card <IoCartOutline /></span>  
                             
-                            </button> <button disable={isDisable} onClick={() => addToLove(product)} className={` ${isDisable == true ? "  cursor-not-allowed" : "cursor-pointer"}  text-white `} data-tooltip-id={`${isDisable && "my-tooltip"}`} data-tooltip-content="Exist" >  <img className='w-10 h-10' src={loveIcon} alt="" />   </button>
+                            </button> 
+                            
+                            <button disable={isDisable} onClick={() => addToLove(product)} className={` ${isDisable == true ? "  cursor-not-allowed" : "cursor-pointer"}  text-white `} data-tooltip-id={`${isDisable && "my-tooltip"}`} data-tooltip-content="Exist" >  <img className='w-10 h-10' src={loveIcon} alt="" />   </button>
                         </div> 
                         
 

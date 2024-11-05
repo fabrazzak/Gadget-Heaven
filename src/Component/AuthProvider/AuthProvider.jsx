@@ -5,6 +5,7 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({children}) => {
     const [carts,setCarts]=useState([])
     const [loves,setLoves]=useState([])
+    
  
     const productInfo = { carts, setCarts, loves, setLoves}
 

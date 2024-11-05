@@ -19,9 +19,8 @@
   -webkit-transform: translate3d(0, 0, var(--toastify-z-index));
   position: fixed;
   padding: 4px;
-  top: 0;  
-  left: 45%;
-  transform: translateX(-50%,);
+ top: 65px!important;  
+  
   width: var(--toastify-toast-width);
   box-sizing: border-box;
   color: #fff;
