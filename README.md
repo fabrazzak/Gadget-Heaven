@@ -4,7 +4,8 @@
 [Visit GadgetHaven](https://bespoke-queijadas-865386.netlify.app/)
 
 ## Requirement Document Link
-[Download Requirement Document](YOUR_REQUIREMENT_DOCUMENT_LINK_HERE)
+[Download Requirement Document]()
+
 
 ## React Fundamental Concepts Used
 This project utilizes various React fundamental concepts, including:
