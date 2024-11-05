@@ -4,10 +4,12 @@ import buttonBg from '../../../assets/button-bg.png'
 import { AuthContext } from '../../../Component/AuthProvider/AuthProvider';
 import CartProduct from '../CartProduct/CartProduct';
 import Modal from '../../../Component/Modal/Modal';
+import { useNavigate } from 'react-router-dom';
 
 const CartProducts = ({   isActive }) => {
 
     const {carts,setCarts,loves,setLoves}=useContext(AuthContext)
+    const navigate=useNavigate()
 
     const totalPrice = carts.reduce((sum, product) => sum + product.price, 0);
 
@@ -28,9 +30,9 @@ const CartProducts = ({   isActive }) => {
     }
 
     const purchaseProductHandle =()=>{
-
-         console.log("helo")
+         
         setCarts([])
+        navigate("/")
 
     }
 
