@@ -20,7 +20,6 @@ This project utilizes various React fundamental concepts, including:
 
 ## Data Management
 - **Context API**: Used to manage the cart and wishlist globally across the application.
-- **Local Storage**: Implemented for data persistence, ensuring that cart and wishlist data remains even after refreshing the page.
 
 ## Key Features
 1. **Responsive Design**: The website is fully responsive and adapts to different screen sizes.
