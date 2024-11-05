@@ -1,0 +1,11 @@
+.bottom-container{
+    max-width:  1110px;
+    margin: auto;
+}
+
+.bottom-banner-section{
+    margin-top: -260px;
+    z-index: 9999999999 !important;
+   
+
+}
