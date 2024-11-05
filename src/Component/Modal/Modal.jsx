@@ -16,7 +16,7 @@ const Modal = ({ purchaseProductHandle }) => {
                     <h3 className="font-bold text-lg mt-3">Payment Successfully</h3>
                    
                     <p className="">Thanks for purchasing.</p>
-                    <p className="">Total: {totalPrice } </p>
+                    <p className="">Total: ${totalPrice } </p>
                     <div className="modal-action flex justify-center w-full ">
                         <form method="dialog">                            
                             <button onClick={purchaseProductHandle} className="btn px-20 rounded-full bg-slate-200 shadow-xl ">Close</button>

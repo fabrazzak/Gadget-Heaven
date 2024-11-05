@@ -5,10 +5,11 @@ import { AuthContext } from '../../../Component/AuthProvider/AuthProvider';
 import CartProduct from '../CartProduct/CartProduct';
 import Modal from '../../../Component/Modal/Modal';
 import { useNavigate } from 'react-router-dom';
+import FourOFour from '../../../Component/FourOFour/FourOFour';
 
-const CartProducts = ({   isActive }) => {
+const CartProducts = () => {
 
-    const {carts,setCarts,loves,setLoves}=useContext(AuthContext)
+    const {carts,setCarts,loves,setLoves, isActive}=useContext(AuthContext)
     const navigate=useNavigate()
 
     const totalPrice = carts.reduce((sum, product) => sum + product.price, 0);
@@ -50,10 +51,10 @@ const CartProducts = ({   isActive }) => {
 
                 <div className='flex gap-6 content-center items-center'>
 
-                    <h2 className='text-xl font-semibold '> {isActive ? <span>Total Cost :{totalPrice.toFixed(2)}</span> : ""} </h2>
+                    <h2 className='text-xl font-semibold '> {isActive ? <span>Total Cost : ${totalPrice.toFixed(2)}</span> : ""} </h2>
                     <div className='flex gap-6'>
                         <button onClick={sortByPriceHandle} className='flex  btn  btn-outline rounded-full text-[#9538E2]'> Sort by Price <img className='w-6 h-6' src={pricingImg} alt="" /></button>
-                        {isActive && <button onClick={() => {
+                        {isActive && <button disabled={carts.length === 0} onClick={() => {
                           
                             document.getElementById('my_modal_6').showModal();
                            
@@ -71,12 +72,17 @@ const CartProducts = ({   isActive }) => {
 
             <div className='flex flex-col gap-8 pb-20'>
 
+
                 {
                     isActive ? carts.map(product => <CartProduct type="cart" product={product} key={product.product_id}></CartProduct>) 
                     :
                      loves.map(product => <CartProduct type="wishlist" product={product} key={product.product_id}></CartProduct>)
                     
                    
+                }
+                {
+                    ((carts.length == 0 && isActive) ?  <FourOFour  title="Product not selected"></FourOFour>: 
+                        (loves.length == 0 && !isActive) ? <FourOFour  title="Product not selected"></FourOFour> :"")
                 }
 
                

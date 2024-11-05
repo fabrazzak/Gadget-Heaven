@@ -1,8 +1,11 @@
 
 
 import { width } from '@fortawesome/free-solid-svg-icons/fa0';
+import { useContext } from 'react';
+import { AuthContext } from '../../../Component/AuthProvider/AuthProvider';
 
-const DashboardBanner = ({ setIsActive, handleIsActive, isActive }) => {
+const DashboardBanner = () => {
+    const { setIsActive, handleIsActive, isActive } = useContext(AuthContext);
    
 
     return (

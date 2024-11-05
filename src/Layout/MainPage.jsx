@@ -15,6 +15,7 @@ const MainPage = () => {
             smooth: true,
         });
     }, [location.pathname])
+   
 
     return (
         <div>

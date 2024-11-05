@@ -73,7 +73,7 @@ const Products = () => {
                 {/* product load  */}
                 <div className={`col-span-3 grid ${(showProduct == 0) ? "md:grid-cols-1" : "md:grid-cols-3" }  gap-6`}>
 
-                    {(showProduct == 0) ? <FourOFour></FourOFour>  
+                    {(showProduct == 0) ? <FourOFour title="No results found"></FourOFour>  
                     :
                    
                     showProduct.map(product => <Product product={product} key={product.product_id}> </Product>)              

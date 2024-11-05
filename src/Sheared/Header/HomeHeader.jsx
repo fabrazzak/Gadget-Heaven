@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import "./HomeHeader.css"
 import Banner from '../../Pages/HomePage/Banner/Banner';
 import cart from '../../assets/cart.png'
@@ -7,8 +7,9 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../Component/AuthProvider/AuthProvider';
 import CartModal from '../../Component/CartModal/CartModal';
 
-const HomeHeader = () => {
-    const { carts,loves, } = useContext(AuthContext);
+const HomeHeader = ( ) => {
+    const { carts, loves, modalTypeSet,type,setType } = useContext(AuthContext);
+   
 
     const listItem=<>
         <li> <NavLink to='/'>Home</NavLink> </li>
@@ -58,13 +59,13 @@ const HomeHeader = () => {
                         <div className="indicator">
                             {!carts.length == 0 ? <span className="indicator-item badge badge-secondary text-[12px] font-bold  w-5 mr-4 h-5">{carts.length}</span> : ""}
 
-                            <button onClick={() => document.getElementById('my_modal_5').showModal()}><a className=""><img className='w-10 h-10' src={cart} alt="cart" />  </a></button>
+                            <button onClick={() => {modalTypeSet ("carts"); document.getElementById('my_modal_5').showModal()}}><a className=""><img className='w-10 h-10' src={cart} alt="cart" />  </a></button>
                         </div>
 
                         <div className="indicator">
 
                             {!loves.length == 0 ? <span className="indicator-item badge badge-secondary text-[12px] font-bold  w-5 mr-4 h-5">{loves.length}</span> : " "}
-                            <a className=""><img className='w-10 h-10' src={love} alt="love" /></a>
+                            <button onClick={() => { modalTypeSet("loves"); document.getElementById('my_modal_5').showModal()}}><a className=""><img className='w-10 h-10' src={love} alt="love" /></a></button>
                         </div>
 
 
@@ -73,7 +74,8 @@ const HomeHeader = () => {
                 </div>
            </div>
             <Banner></Banner>
-            <CartModal></CartModal>
+            <CartModal type={type}></CartModal>
+            
             
         </div>
     );

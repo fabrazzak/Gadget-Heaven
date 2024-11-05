@@ -38,6 +38,7 @@ const CartProduct = ({ product, type }) => {
                     setCarts(updatedCarts)
                 }, 1000)               
                 toast(<p className='alert alert-error'>Product Delete done</p>) 
+
         }
 
         if (type == "wishlist") {           
@@ -75,7 +76,7 @@ const CartProduct = ({ product, type }) => {
                         <div className='flex  flex-col gap-4'>
                             <h1 className="text-2xl font-bold">{product_title}</h1>
                             <p className="">{description}  </p>
-                            <p className=" font-semibold"> Price :{price}  </p>
+                            <p className=" font-semibold"> Price : $ {price}  </p>
                             {(type == "wishlist") ? <div>
                                 <button onClick={() => wishListToAddToCart(product)} className=' border py-2 px-4 bg-purple-700 text-white rounded-full '  > <span className='flex  justify-center items-center gap-2'>Add to Card <IoCartOutline /></span>
 

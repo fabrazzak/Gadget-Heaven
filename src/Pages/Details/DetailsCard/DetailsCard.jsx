@@ -112,7 +112,7 @@ const DetailsCard = () => {
                             
                             </button> 
                             
-                            <button disable={isDisable} onClick={() => addToLove(product)} className={` ${isDisable == true ? "  cursor-not-allowed" : "cursor-pointer"}  text-white `} data-tooltip-id={`${isDisable && "my-tooltip"}`} data-tooltip-content="Exist" >  <img className='w-10 h-10' src={loveIcon} alt="" />   </button>
+                            <button disabled={isDisable} onClick={() => addToLove(product)} className={` ${isDisable == true ? "  cursor-not-allowed" : "cursor-pointer"}  text-white `} data-tooltip-id={`${isDisable && "my-tooltip"}`} data-tooltip-content="Exist" >  <img className='w-10 h-10' src={loveIcon} alt="" />   </button>
                         </div> 
                         
 
