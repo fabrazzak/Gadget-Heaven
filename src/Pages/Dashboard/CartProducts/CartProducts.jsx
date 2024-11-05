@@ -72,9 +72,9 @@ const CartProducts = ({   isActive }) => {
             <div className='flex flex-col gap-8 pb-20'>
 
                 {
-                    isActive ? carts.map(product => <CartProduct product={product} key={product.product_id}></CartProduct>) 
+                    isActive ? carts.map(product => <CartProduct type="card" product={product} key={product.product_id}></CartProduct>) 
                     :
-                        loves.map(product => <CartProduct product={product} key={product.product_id}></CartProduct>)
+                     loves.map(product => <CartProduct type="wishlist" product={product} key={product.product_id}></CartProduct>)
                     
                    
                 }
