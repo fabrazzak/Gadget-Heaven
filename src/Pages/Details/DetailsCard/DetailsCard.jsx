@@ -8,11 +8,19 @@ import { AuthContext } from '../../../Component/AuthProvider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import loveIcon from "../../../assets/love.png"
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip'
+import { Tooltip as ReactTooltip } from 'react-tooltip'
+import { Rating } from '@smastrom/react-rating'
+
+import '@smastrom/react-rating/style.css'
+
 
 const DetailsCard = () => {
     const params=useParams();
     const [product,setProduct]=useState([]);  
     const  { carts, setCarts,loves, setLoves } = useContext(AuthContext);
+    const [isDisable,setDisable]=useState(false);
 
     useEffect(()=>{       
         fetch(`/products.json`)
@@ -32,12 +40,16 @@ const DetailsCard = () => {
     
     const addToLove=(product)=>{
         let addProduct= [...loves]  
-        if( addProduct.includes(product)){
-            return toast(<p className='alert alert-error'>Product is already added </p>);  
+
+        if( addProduct.includes(product)){           
+            return setDisable(true)           
+            
         }      
         addProduct.push(product);
         setLoves(addProduct);  
-        toast(<p className='alert alert-info'>Product is successfully add</p>);    
+        toast(<p className='alert alert-info'>Product is successfully add</p>);  
+        setDisable(true)
+
     }
 
     console.log(carts)   
@@ -49,6 +61,7 @@ const DetailsCard = () => {
     return (
         <div >
             <ToastContainer />
+            <Tooltip id="my-tooltip" />
             <div className='  bg-white   rounded-3xl bottom-container  z-40  bottom-banner-section'>
                 <div className=" grid grid-cols-5 gap-10 p-10 content-center items-center  " >
                     {/* first col  */}
@@ -82,12 +95,18 @@ const DetailsCard = () => {
                        </div>
 
                        <h2 className='font-bold '>Rating </h2>
-                        <p className='flex gap-4 mb-3  content-center items-center'> <ReactStarsRating className="flex " value={rating} />  <span className=' font-semibold rounded-3xl  btn-outline bg-slate-200 px-4 py-1 '>{rating} </span></p>
+                        <p className='flex gap-4 mb-3  content-center items-center'>
+                            <Rating
+                                style={{ maxWidth: 180 }}
+                                value={rating}
+                                readOnly
+                            /> <span className=' font-semibold rounded-3xl  btn-outline bg-slate-200 px-4 py-1 '>{rating} </span></p>
                         <div className='flex  gap-6 '>
                             <button onClick={()=>addToCart(product)}  className=' border py-2 px-4 bg-purple-700 text-white rounded-full '  > <span className='flex  justify-center items-center gap-2'>Add to Card <IoCartOutline /></span>  
                             
-                            </button> <button onClick={() => addToLove(product)} className='  text-white '  >  <img className='w-10 h-10' src={loveIcon} alt="" />   </button>
-                        </div>                       
+                            </button> <button disable={isDisable} onClick={() => addToLove(product)} className={` ${isDisable == true ? "  cursor-not-allowed" : "cursor-pointer"}  text-white `} data-tooltip-id={`${isDisable && "my-tooltip"}`} data-tooltip-content="Exist" >  <img className='w-10 h-10' src={loveIcon} alt="" />   </button>
+                        </div> 
+                        
 
 
                     </div>

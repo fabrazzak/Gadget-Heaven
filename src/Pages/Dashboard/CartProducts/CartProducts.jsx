@@ -29,7 +29,7 @@ const CartProducts = ({   isActive }) => {
 
     const purchaseProductHandle =()=>{
 
-        
+         console.log("helo")
         setCarts([])
 
     }
@@ -52,8 +52,9 @@ const CartProducts = ({   isActive }) => {
                     <div className='flex gap-6'>
                         <button onClick={sortByPriceHandle} className='flex  btn  btn-outline rounded-full text-[#9538E2]'> Sort by Price <img className='w-6 h-6' src={pricingImg} alt="" /></button>
                         {isActive && <button onClick={() => {
-                            purchaseProductHandle; 
-                            document.getElementById('my_modal_5').showModal();
+                          
+                            document.getElementById('my_modal_6').showModal();
+                           
                         }} className='flex  btn  btn-outline rounded-full text-white'
                             style={{
                                 backgroundImage: `url('${buttonBg}')`,
@@ -81,7 +82,7 @@ const CartProducts = ({   isActive }) => {
             </div>     
 
 
-            <Modal> </Modal>
+            <Modal purchaseProductHandle={purchaseProductHandle}> </Modal>
             
         </div>
     );

@@ -5,6 +5,7 @@ import cart from '../../assets/cart.png'
 import love from '../../assets/love.png'
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../Component/AuthProvider/AuthProvider';
+import CartModal from '../../Component/CartModal/CartModal';
 
 const HomeHeader = () => {
     const { carts,loves, } = useContext(AuthContext);
@@ -57,7 +58,7 @@ const HomeHeader = () => {
                         <div className="indicator">
                             {!carts.length == 0 ? <span className="indicator-item badge badge-secondary text-[12px] font-bold  w-5 mr-4 h-5">{carts.length}</span> : ""}
 
-                            <a className=""><img className='w-10 h-10' src={cart} alt="cart" />  </a>
+                            <button onClick={() => document.getElementById('my_modal_5').showModal()}><a className=""><img className='w-10 h-10' src={cart} alt="cart" />  </a></button>
                         </div>
 
                         <div className="indicator">
@@ -72,6 +73,7 @@ const HomeHeader = () => {
                 </div>
            </div>
             <Banner></Banner>
+            <CartModal></CartModal>
             
         </div>
     );

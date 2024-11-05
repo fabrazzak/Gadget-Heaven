@@ -12,8 +12,9 @@ const Products = () => {
         fetch('/products.json')
             .then(res => res.json())
             .then(data => {
+                const defaultData= data.slice(0,9)
                 setProducts(data);
-                setShowProduct(data)
+                setShowProduct(defaultData)
             })
 
     }, [])
@@ -79,6 +80,7 @@ const Products = () => {
 
                         
                     }
+                    
 
 
 
